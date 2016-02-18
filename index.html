@@ -65,6 +65,9 @@
             option.text = name;
             nameSelect.add(option);
           });
+          var nameDiv = document.getElementById('name_selector');
+          nameDiv.style.display = 'inline';
+          updateView();
           console.log(names);
 
         }
@@ -96,6 +99,14 @@
           }
 
         });
+
+        //zoom out on mobile
+        var viewport = document.querySelector('meta[name="viewport"]');
+        if ( viewport ) {
+          viewport.content = "initial-scale=1.0";
+          // viewport.content = "width=1200";
+        }
+
       };
 
       // Callback that creates and populates a data table,
@@ -127,11 +138,11 @@
     </script>
   </head>
 
-  <body>
+  <body style="padding-top:70px">
     <!--Div that will hold the pie chart-->
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top" id="name_selector" style="display:none">
       <div class="container">
-        <form class="form-inline pull-right">
+        <form class="navbar-form navbar-right form-inline">
           <div class="form-group">
             <select class="form-control" id="name_select" onchange="updateView()">
             </select>
